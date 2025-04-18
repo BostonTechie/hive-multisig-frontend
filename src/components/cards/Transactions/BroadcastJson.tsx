@@ -110,6 +110,8 @@ function BroadcastJson() {
   };
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/BroadcastJson.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -119,7 +121,6 @@ function BroadcastJson() {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           id: '',

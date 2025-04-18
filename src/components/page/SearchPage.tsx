@@ -65,6 +65,7 @@ export const SearchBar: React.FC<ISearchBarInterface> = (
 
   return (
     <div>
+      src/components/page/SearchPage.tsx
       <div className="ms-2 text-start" style={{ color: 'black' }}>
         <h5>Search Account</h5>
       </div>

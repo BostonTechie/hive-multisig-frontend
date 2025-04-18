@@ -109,6 +109,8 @@ const RecurrentTransferCard: React.FC<{}> = () => {
   });
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/RecurrentTransferCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -118,7 +120,6 @@ const RecurrentTransferCard: React.FC<{}> = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           amount: 0,

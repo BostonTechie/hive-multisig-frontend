@@ -106,6 +106,8 @@ const WithdrawFromSavingsCard: React.FC<{}> = () => {
 
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/WithdrawFromSavingsCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -115,7 +117,6 @@ const WithdrawFromSavingsCard: React.FC<{}> = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           amount: 0,

@@ -11,6 +11,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
+    {' '}
+    src/index.tsx ..
     <PersistGate loading={null} persistor={persistor}>
       <Router>
         <App />

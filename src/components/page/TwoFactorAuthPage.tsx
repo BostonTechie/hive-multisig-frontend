@@ -100,6 +100,7 @@ export const TwoFactorAuthPage = () => {
       if (hasDefaultBot === undefined) {
         return (
           <div className="d-flex justify-content-center align-items-center vh-100">
+            src/components/page/TwoFactorAuthPage.tsx
             <div className="text-center">
               <Spinner animation="grow" />
               <p>Retrieving 2FA Data</p>

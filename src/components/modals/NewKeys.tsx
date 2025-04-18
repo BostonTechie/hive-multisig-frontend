@@ -33,6 +33,7 @@ function NewKeys({
     <div
       className="modal newKeysModal"
       style={{ display: 'block', position: 'initial' }}>
+      src/components/modals/NewKeys.tsx
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"

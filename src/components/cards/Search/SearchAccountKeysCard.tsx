@@ -40,6 +40,7 @@ export const SearchAccountKeysCard: FC<IAccountKeysCardProps> = ({
   }, [accountKeyAuths]);
   return (
     <Card border={'secondary'}>
+      src/components/cards/Search/SearchAccountKeysCard.tsx
       <Container>
         <Card.Body>
           <Card.Title>{authAccountType}</Card.Title>

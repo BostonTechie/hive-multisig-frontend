@@ -18,6 +18,8 @@ export const Expiration = ({ setExpiration }: IExpirationProp) => {
 
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/Expiration.tsx
       <Form.Label>Expire in</Form.Label>
       <Row className="mb-3" xs="auto">
         <Col xs={3}>

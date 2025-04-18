@@ -21,6 +21,7 @@ const ErrorModal = ({ show, setShow, error }: ErrorProps) => {
         handleModalClose();
       }}
       centered>
+      src/components/modals/Error.tsx
       <Modal.Header closeButton>
         <Modal.Title>{error.Title}</Modal.Title>
       </Modal.Header>

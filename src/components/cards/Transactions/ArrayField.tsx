@@ -14,6 +14,7 @@ const ArrayField: React.FC<IArrayFieldProp> = ({
 }) => {
   return (
     <Container key={fieldKey} fluid>
+      src/components/cards/Transactions/ArrayField.tsx
       <Stack direction="horizontal" gap={3}>
         <Form.Control className="gray-input-outline" value={value} readOnly />
 

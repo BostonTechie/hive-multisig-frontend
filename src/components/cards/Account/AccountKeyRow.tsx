@@ -186,6 +186,8 @@ export const AccountKeyRow: FC<IAccountKeyRowProps> = ({
 
   return (
     <div className="mb-3">
+      {' '}
+      src/components/cards/Account/AccountKeyRow.tsx
       <Container>
         {multisigBotType !== '' ? (
           <Badge className="mb-1" bg="info">

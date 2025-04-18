@@ -100,6 +100,8 @@ const UpdateProposalVoteCard: React.FC<{}> = () => {
   });
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/UpdateProposalVoteCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -109,7 +111,6 @@ const UpdateProposalVoteCard: React.FC<{}> = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           approve: false,

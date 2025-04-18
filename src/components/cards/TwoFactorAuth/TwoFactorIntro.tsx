@@ -10,6 +10,7 @@ export const TwoFactorIntro = () => {
 
   return (
     <Container>
+      src/components/cards/TwoFactorAuth/TwoFactorIntro.tsx
       <Row className="justify-content-md-center">
         <Col md="auto" lg="7">
           <Card border="secondary">

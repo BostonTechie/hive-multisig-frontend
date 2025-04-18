@@ -183,6 +183,7 @@ export const TwoFAConfirmation = () => {
   };
   return isChangesConfirmed ? (
     <Container>
+      src/components/cards/TwoFactorAuth/Multisig2FAHooks.tsx
       <Row className="justify-content-md-center">
         <Col md="auto" lg="7">
           <Card border="secondary">

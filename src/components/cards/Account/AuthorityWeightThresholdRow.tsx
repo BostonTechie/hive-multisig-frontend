@@ -22,7 +22,6 @@ export function AuthorityWeightThreshold({
   const thresholdWarningRedux = useAppSelector(
     (state) => state.updateAuthorities.thresholdWarning,
   );
-  
 
   useEffect(() => {
     setReadOnly(!enableEdit);
@@ -54,6 +53,8 @@ export function AuthorityWeightThreshold({
 
   return (
     <div>
+      {' '}
+      src/components/cards/Account/AuthorityWeightThresholdRow.tsx
       <InputGroup className="mb-3">
         <InputGroup.Text className={editFlag} id="basic-addon1">
           Weight Threshold

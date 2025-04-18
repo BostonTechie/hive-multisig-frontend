@@ -71,6 +71,7 @@ function SearchAccountPage({ authorities }: ISearchAccountPageProp) {
 
   return display ? (
     <div>
+      src/components/page/SearchAccountPage.tsx
       <Stack gap={3}>{cards}</Stack>
     </div>
   ) : (

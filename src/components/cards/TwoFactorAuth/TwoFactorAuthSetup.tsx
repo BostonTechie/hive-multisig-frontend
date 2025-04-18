@@ -210,6 +210,7 @@ export const TwoFactorAuthSetup = () => {
     <TwoFAConfirmation />
   ) : (
     <Container>
+      src/components/cards/TwoFactorAuth/TwoFactorAuthSetup.tsx
       <Row className="justify-content-md-center">
         <Col>
           <Card border="secondary">

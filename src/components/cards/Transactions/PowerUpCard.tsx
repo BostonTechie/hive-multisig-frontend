@@ -84,6 +84,7 @@ const PowerUpCard: React.FC<{}> = () => {
   });
   return (
     <div>
+      src/components/cards/Transactions/PowerUpCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -93,7 +94,6 @@ const PowerUpCard: React.FC<{}> = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           amount: 0,

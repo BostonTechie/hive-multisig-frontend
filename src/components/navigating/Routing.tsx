@@ -7,6 +7,7 @@ import { TwoFactorAuthPage } from '../page/TwoFactorAuthPage';
 const Routing = () => {
   return (
     <div>
+      src/components/navigating/Routing.tsx
       <Routes>
         <Route path="/:id" element={<HomePage />} />
         <Route path="/search" element={<SearchBar />} />

@@ -87,6 +87,8 @@ export function AuthorityCard({ authorityName }: IAuthoritiCardProp) {
 
   return (
     <Card>
+      {' '}
+      src/components/cards/Account/AuthorityCard.tsx
       <Container>
         <Card.Body>
           <Card.Title>{authorityName + ' Authorities'}</Card.Title>

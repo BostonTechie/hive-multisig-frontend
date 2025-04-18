@@ -85,6 +85,8 @@ export const VoteOperationCard = () => {
   });
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/VoteOperationCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -94,7 +96,6 @@ export const VoteOperationCard = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           author: '',

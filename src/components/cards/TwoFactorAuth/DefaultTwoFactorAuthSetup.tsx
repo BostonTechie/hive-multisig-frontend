@@ -11,6 +11,7 @@ export const DefaultTwoFactorAuthSetup = ({ isManageTwoFA }: TwoFATabProp) => {
   );
   return (
     <div>
+      src/components/cards/TwoFactorAuth/DefaultTwoFactorAuthSetup.tsx
       {isManageTwoFA ? (
         <p className="justify-content-md-center">
           Removing the default bot <strong>@{`${defaultBot}`}</strong> will

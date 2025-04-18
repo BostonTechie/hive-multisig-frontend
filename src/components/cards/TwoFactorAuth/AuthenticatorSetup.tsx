@@ -113,6 +113,7 @@ export const AuthenticatorSetup = () => {
 
   return (
     <Container>
+      src/components/cards/TwoFactorAuth/AuthenticatorSetup.tsx
       <Row className="justify-content-md-center">
         <Col md="auto" lg="7">
           <Card border="secondary">

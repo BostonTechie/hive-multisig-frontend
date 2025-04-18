@@ -257,6 +257,7 @@ const NavSearchBar = ({
   if (isLoggedIn) {
     return (
       <InputGroup className={classNames}>
+        src/components/navigating/NavBar.tsx
         <InputGroup.Text
           className="bg-dark ps-0 pe-0 outline-secondary text-secondary navbar-input-border-color"
           id="basic-addon1">

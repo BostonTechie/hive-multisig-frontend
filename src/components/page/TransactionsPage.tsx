@@ -250,6 +250,7 @@ export const TransactionPage = () => {
 
   return (
     <div>
+      src/components/page/TransactionsPage.tsx
       <div>
         <OtpModal handleSubmit={handleOtpSubmit} show={askOtp} />
         <InputGroup>

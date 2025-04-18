@@ -84,6 +84,8 @@ export const CommentOperationCard = () => {
   });
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/CommentOperationCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -93,7 +95,6 @@ export const CommentOperationCard = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           author: accountDetails ? accountDetails.data.username : '',

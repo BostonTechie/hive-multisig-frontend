@@ -79,6 +79,7 @@ const AccountWitnessProxCard: React.FC<{}> = () => {
 
   return (
     <div>
+      src/components/cards/Transactions/AccountWitnessProxCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -88,7 +89,6 @@ const AccountWitnessProxCard: React.FC<{}> = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           account: accountDetails ? accountDetails.data.username : '',

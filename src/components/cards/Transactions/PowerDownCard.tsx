@@ -85,6 +85,8 @@ const PowerDownCard: React.FC<{}> = () => {
   });
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/PowerDownCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -94,7 +96,6 @@ const PowerDownCard: React.FC<{}> = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           account: '',

@@ -84,6 +84,7 @@ export const BlogpostOperationCard = () => {
   });
   return (
     <div>
+      src/components/cards/Transactions/BlogpostOperationCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -93,7 +94,6 @@ export const BlogpostOperationCard = () => {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           author: accountDetails ? accountDetails.data.username : '',

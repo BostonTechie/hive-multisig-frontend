@@ -50,11 +50,11 @@ export const OtpModal = ({ handleSubmit, show }: IOtpModal) => {
       animation={false}
       dialogClassName="modal-30w"
       centered>
+      src/components/modals/OtpModal.tsx
       <Modal.Header closeButton>
         <Modal.Title>One-Time-Password (OTP)</Modal.Title>
       </Modal.Header>
       <Container>{otpInputs}</Container>
-
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close

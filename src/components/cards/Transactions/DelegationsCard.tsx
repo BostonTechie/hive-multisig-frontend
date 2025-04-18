@@ -112,6 +112,8 @@ function DelegationsCard() {
   };
   return (
     <div>
+      {' '}
+      src/components/cards/Transactions/DelegationsCard.tsx
       <ErrorModal
         show={onErrorShow}
         setShow={setOnErrorShow}
@@ -121,7 +123,6 @@ function DelegationsCard() {
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleTransaction(values);
-          
         }}
         initialValues={{
           delegatee: '',

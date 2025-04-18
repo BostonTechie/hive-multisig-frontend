@@ -211,6 +211,7 @@ export const ManageTwoFaAccount = () => {
   ) : (
     <Container>
       <div>
+        src/components/cards/TwoFactorAuth/ManageTwoFaAccount.tsx
         <OtpModal handleSubmit={handleOtpSubmit} show={askOtp} />
       </div>
       <Row className="justify-content-md-center">

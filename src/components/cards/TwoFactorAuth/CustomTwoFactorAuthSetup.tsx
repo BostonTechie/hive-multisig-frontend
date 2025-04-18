@@ -13,6 +13,7 @@ export const CustomTwoFactorAuthSetup = ({ isManageTwoFA }: TwoFATabProp) => {
 
   return (
     <div>
+      src/components/cards/TwoFactorAuth/CustomTwoFactorAuthSetup.tsx
       {isManageTwoFA ? (
         <div>
           <p className="justify-content-md-center">

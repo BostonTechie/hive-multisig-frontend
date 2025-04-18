@@ -54,6 +54,8 @@ export const InputRow = ({
 
   return (
     <div key={rowKey}>
+      {' '}
+      src/components/cards/Transactions/InputRow.tsx
       <Row className="mb-3">
         <Form.Group>
           <Form.Label>{label}</Form.Label>

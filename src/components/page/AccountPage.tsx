@@ -178,6 +178,7 @@ function AccountPage({ authorities }: IAccountPageProp) {
 
   return display ? (
     <div>
+      src/components/page/AccountPage.tsx
       <UpdateAuthoritiesConfirmation show={show} handleClose={handleClose} />
       <Stack gap={3}>
         {

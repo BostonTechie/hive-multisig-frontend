@@ -135,6 +135,7 @@ export const UpdateAuthoritiesConfirmation = ({
   };
   return (
     <div>
+      src/components/modals/UpdateAuthoritiesConfirmation.tsx
       <div>
         <OtpModal handleSubmit={handleUpdate} show={askOtp} />
       </div>
