@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LoginForm from '../page/LoginForm';
+import { MyPage } from '../page/MyPage';
 import { HomePage, SearchBar } from '../page/SearchPage';
 import { SignRequestsPage } from '../page/SignRequestPage';
 import { TransactionPage } from '../page/TransactionsPage';
@@ -10,6 +11,7 @@ const Routing = () => {
     <div>
       <Routes>
         <Route path="/:id" element={<HomePage />} />
+        <Route path="/my" element={<MyPage />} />
         <Route path="/search" element={<SearchBar />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/transaction" element={<TransactionPage />} />

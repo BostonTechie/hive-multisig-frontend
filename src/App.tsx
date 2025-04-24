@@ -333,7 +333,7 @@ function App() {
           <Routing />
         </Container>
       </div>
-      <div className="footer-text">@2023 Hive Keychain</div>
+      <div className="footer-text">@2025 Sig Vault</div>
     </div>
   );
 }
