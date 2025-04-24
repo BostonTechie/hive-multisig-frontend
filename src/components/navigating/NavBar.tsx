@@ -111,6 +111,8 @@ const NavBar = () => {
       bg="dark"
       variant="dark"
       sticky="top">
+      {' '}
+      <h5 className="text-white">Navbar 115</h5>
       <Container fluid>
         <Navbar.Brand
           className="nav-text-color ms-0 me-1"
@@ -131,7 +133,7 @@ const NavBar = () => {
             className="d-inline-block align-top me-0"
             style={{ marginRight: 10 }}
           />{' '}
-          {`Hive Multisig`}
+          {`Sig Vault`}
         </Navbar.Brand>
         <Navbar.Toggle
           onClick={() => setExpanded(expanded ? false : true)}
@@ -184,7 +186,6 @@ const NavBar = () => {
             ) : (
               <></>
             )}
-
             {isLoggedIn && accountDetails ? (
               <Nav.Link onClick={() => setDestination('/twoFactor')}>
                 2FA (Beta)
@@ -192,6 +193,9 @@ const NavBar = () => {
             ) : (
               <></>
             )}
+            <h5 className="text-white">
+              src/components/navigating/NavBar.tsx 196
+            </h5>
           </Nav>
           {/* Search bar when collapsed and logged in
           <NavSearchBar
@@ -308,6 +312,7 @@ const NavUserAvatarDropdown = ({
 
   return (
     <div className={classNames}>
+      <h5 className="text-white">nav 313</h5>
       <Stack direction="horizontal" gap={1}>
         <img
           className="avatar-sm"
@@ -318,7 +323,7 @@ const NavUserAvatarDropdown = ({
         <Nav>
           <Dropdown as={NavItem}>
             <Dropdown.Toggle className="nav-text-color" as={NavLink}>
-              {username}
+              {username} ..nav326
             </Dropdown.Toggle>
             <Dropdown.Menu
               className="mt-1 pt-1 navbar-avatar-menu"
@@ -327,7 +332,7 @@ const NavUserAvatarDropdown = ({
               <Dropdown.Item
                 className="nav-text-color"
                 onClick={() => handleLogout()}>
-                Logout
+                Logout..nav335
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -345,6 +350,7 @@ const NavUserAvatar = ({
   const navigate = useNavigate();
   return (
     <Stack className={classNames} direction="horizontal">
+      src/components/navigating/NavBar.tsx num 2
       <Navbar.Brand
         className="me-md-2 me-lg-1"
         onClick={() => navigate('/transaction')}>

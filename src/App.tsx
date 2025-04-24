@@ -323,8 +323,7 @@ function App() {
 
   return (
     <div className="App">
-      {' '}
-      src/App.tsx
+      app.tsx
       <NavBar />
       <div style={{ flex: 1 }}>
         <Container

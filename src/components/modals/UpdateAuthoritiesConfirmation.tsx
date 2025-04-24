@@ -168,7 +168,6 @@ export const UpdateAuthoritiesConfirmation = ({
               }}>
               Close
             </Button>
-
             <Button
               variant="primary"
               onClick={() => {

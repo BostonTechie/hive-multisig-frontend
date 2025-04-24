@@ -1,3 +1,4 @@
-# Hive Multisig
+# Sig Vault
 
-One-stop frontend for all multisig needs
+Hive multisig accounts which facilitate the creation and management of essentilly businesses and organizations
+www.sigvault.com

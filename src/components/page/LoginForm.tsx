@@ -201,13 +201,20 @@ const LoginForm = () => {
       if (posting) await connectPosting();
       if (active) await connectActive();
     } catch (error) {
-      alert(`Login Failed \n ${error.message}`);
+      alert(`Login Failed loginform 204 \n ${error.message}`);
     }
   };
 
   return (
     <div>
       src/components/page/LoginForm.tsx
+      <img
+        alt=""
+        src="img/svLogin.jpg"
+        width="300"
+        className="d-inline-block align-top me-0"
+        style={{ marginRight: 10 }}
+      />{' '}
       <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
         <Form.Control
@@ -220,6 +227,7 @@ const LoginForm = () => {
           value={username}
           ref={inputRef}
         />
+        <h5 className="text-black">loginform.tsx 223</h5>
         <Button
           variant="outline-secondary"
           id="button-addon2"
@@ -239,6 +247,7 @@ const LoginForm = () => {
             setPosting(!posting);
           }}
         />
+        <h5 className="textblack">loginform.tsx 243</h5>
         <Form.Check
           type={'checkbox'}
           label={`Active Key`}
