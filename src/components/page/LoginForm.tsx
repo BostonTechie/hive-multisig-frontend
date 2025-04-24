@@ -206,56 +206,66 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      src/components/page/LoginForm.tsx
-      <img
-        alt=""
-        src="img/svLogin.jpg"
-        width="300"
-        className="d-inline-block align-top me-0"
-        style={{ marginRight: 10 }}
-      />{' '}
-      <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-        <Form.Control
-          placeholder={username !== '' ? username : 'Username'}
-          aria-label="Username"
-          aria-describedby="basic-addon2"
-          onChange={(e) => setUsername(e.target.value)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          value={username}
-          ref={inputRef}
-        />
-        <h5 className="text-black">loginform.tsx 223</h5>
-        <Button
-          variant="outline-secondary"
-          id="button-addon2"
-          onClick={() => handleOnLoginSubmit()}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}>
-          Login
-        </Button>
-      </InputGroup>
-      <div style={{ display: 'flex', flexDirection: 'row', columnGap: '20px' }}>
-        Login with:
-        <Form.Check
-          type={'checkbox'}
-          label={`Posting Key`}
-          checked={posting}
-          onChange={() => {
-            setPosting(!posting);
-          }}
-        />
-        <h5 className="textblack">loginform.tsx 243</h5>
-        <Form.Check
-          type={'checkbox'}
-          label={`Active Key`}
-          checked={active}
-          onChange={() => {
-            setActive(!active);
-          }}
-        />
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+        <div className="bg-orange-500">
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+            <Form.Control
+              placeholder={username !== '' ? username : 'Username'}
+              aria-label="Username"
+              aria-describedby="basic-addon2"
+              onChange={(e) => setUsername(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              value={username}
+              ref={inputRef}
+            />
+            <h5 className="text-black">loginform.tsx 223</h5>
+            <Button
+              variant="outline-secondary"
+              id="button-addon2"
+              onClick={() => handleOnLoginSubmit()}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}>
+              Login
+            </Button>
+          </InputGroup>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              columnGap: '20px',
+            }}>
+            Login with:
+            <Form.Check
+              type={'checkbox'}
+              label={`Posting Key`}
+              checked={posting}
+              onChange={() => {
+                setPosting(!posting);
+              }}
+            />
+            <h5 className="textblack">loginform.tsx 243</h5>
+            <Form.Check
+              type={'checkbox'}
+              label={`Active Key`}
+              checked={active}
+              onChange={() => {
+                setActive(!active);
+              }}
+            />
+          </div>
+        </div>
+        <div className="bg-pink-500">
+          src/components/page/LoginForm.tsx
+          <img
+            alt="Golden safe with Red letter S logo"
+            src="img/svLogin.jpg"
+            className="object-cover"
+            style={{ marginRight: 10 }}
+          />{' '}
+        </div>
       </div>
     </div>
   );
