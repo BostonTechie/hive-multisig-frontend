@@ -322,7 +322,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App light">
       app.tsx
       <NavBar />
       <div style={{ flex: 1 }}>
