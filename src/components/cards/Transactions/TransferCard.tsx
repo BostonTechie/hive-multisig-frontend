@@ -183,7 +183,21 @@ function Transfer() {
                     <Button
                       type="submit"
                       variant="success"
-                      onClick={() => handleSubmit()}>
+                      onClick={() => {
+                        handleSubmit();
+                        console.log(
+                          values,
+                          'touched',
+                          touched,
+                          'errors',
+                          errors,
+                          'expiration',
+                          expiration,
+                          'operation',
+                          operation,
+                          assetType,
+                        );
+                      }}>
                       Submit
                     </Button>
                   </div>
