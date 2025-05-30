@@ -20,33 +20,35 @@ export function SigVaultAdmin() {
   // const baseURL = process.env.REACT_APP_BASE_URL; // Fallback URL
   const dbURL = process.env.REACT_APP_DB_URL; // Fallback UR
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     console.log(process.env);
     event.preventDefault();
-    axios({
-      method: 'POST',
-      url: baseURL,
-      data: {
-        account: account,
-        private_owner_key: keys.private_owner,
-        private_active_key: keys.private_active,
-        private_posting_key: keys.private_posting,
-        private_memo_key: keys.private_memo,
-        public_owner_key: keys.public_owner,
-        public_active_key: keys.public_active,
-        public_posting_key: keys.public_posting,
-        public_memo_key: keys.public_memo,
-      },
-      withCredentials: true,
-    })
-      // .then((res) => {
-      //   localStorage.setItem('user', res.data._id);
-      // })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
+
+    try {
+      const token = localStorage.getItem('jwtToken'); // 🔐 Retrieve the stored access token
+
+      const response = await axios({
+        method: 'POST',
+        url: baseURL,
+        headers: { Authorization: `Bearer ${token}` }, // 🔐 Attach token
+        data: {
+          account: account,
+          private_owner_key: keys.private_owner,
+          private_active_key: keys.private_active,
+          private_posting_key: keys.private_posting,
+          private_memo_key: keys.private_memo,
+          public_owner_key: keys.public_owner,
+          public_active_key: keys.public_active,
+          public_posting_key: keys.public_posting,
+          public_memo_key: keys.public_memo,
+        },
+        withCredentials: true,
       });
+
+      console.log('✅ Submission Successful:', response.data);
+    } catch (err) {
+      console.error('❌ Submission Failed:', err.message);
+    }
   };
 
   useEffect(() => {
@@ -85,7 +87,6 @@ export function SigVaultAdmin() {
               type="text"
               value={account}
               onChange={(e) => setAccount(e.target.value)}
-              required
             />
           </div>
           <div>
@@ -96,7 +97,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, private_owner: e.target.value })
               }
-              required
             />
           </div>
           <div>
@@ -107,7 +107,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, private_active: e.target.value })
               }
-              required
             />
           </div>
           <div>
@@ -118,7 +117,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, private_posting: e.target.value })
               }
-              required
             />
           </div>
           <div>
@@ -129,7 +127,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, private_memo: e.target.value })
               }
-              required
             />
           </div>
 
@@ -141,7 +138,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, public_owner: e.target.value })
               }
-              required
             />
           </div>
           <div>
@@ -152,7 +148,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, public_active: e.target.value })
               }
-              required
             />
           </div>
           <div>
@@ -163,7 +158,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, public_posting: e.target.value })
               }
-              required
             />
           </div>
           <div>
@@ -174,7 +168,6 @@ export function SigVaultAdmin() {
               onChange={(e) =>
                 setKeys({ ...keys, public_memo: e.target.value })
               }
-              required
             />
           </div>
           <button type="submit">Register here</button>
