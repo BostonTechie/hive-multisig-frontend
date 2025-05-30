@@ -1,5 +1,7 @@
 # Sig Vault
 
+const baseURL = import.meta.env.VITE_BASE_URL
+
 Hive multisig accounts which facilitate the creation and management of essentilly businesses and organizations
 www.sigvault.com
 
@@ -32,6 +34,7 @@ o Assignment of roles to group or business process
 o Assignment of groups to a portfolio or business process
 o Dynamic approvals based on transaction types
 o Board vote / shareholder votes
+o throttle list
 
 Nice to have – future versions
 

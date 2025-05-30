@@ -15,7 +15,7 @@ export function SigHome() {
     event.preventDefault();
     axios({
       method: 'POST',
-      url: `${dbURL}/session/register`,
+      url: baseURL,
       data: {
         email: email,
         password: password,
@@ -35,6 +35,8 @@ export function SigHome() {
   console.log('Login Info:', { email, password });
 
   useEffect(() => {
+    console.log(process.env, 'env');
+
     if (!baseURL) {
       console.error('BASE_URL is undefined! Check your .env configuration.');
       return;
@@ -92,7 +94,7 @@ export function SigHome() {
       </form>
 
       <div>
-        <h1>What's up, {JSON.stringify(dataMine)}</h1>
+        {/* <h1>What's up, {JSON.stringify(dataMine)}</h1> */}
         <p>Base URL: {baseURL} here</p>
       </div>
     </div>
