@@ -5,10 +5,17 @@ export function SigVaultAdmin() {
   const [, setData] = useState([]);
 
   const [account, setAccount] = useState('');
-  const [private_owner, setOwner] = useState('');
-  const [private_active, setActive] = useState('');
-  const [private_posting, setPosting] = useState('');
-  const [private_memo, setMemo] = useState('');
+  const [keys, setKeys] = useState({
+    private_owner: '',
+    private_active: '',
+    private_posting: '',
+    private_memo: '',
+    public_owner: '',
+    public_active: '',
+    public_posting: '',
+    public_memo: '',
+  });
+
   const baseURL = 'http://localhost:3000/sigvault';
   // const baseURL = process.env.REACT_APP_BASE_URL; // Fallback URL
   const dbURL = process.env.REACT_APP_DB_URL; // Fallback UR
@@ -21,10 +28,14 @@ export function SigVaultAdmin() {
       url: baseURL,
       data: {
         account: account,
-        private_owner_key: private_owner,
-        private_active_key: private_active,
-        private_posting_key: private_posting,
-        private_memo_key: private_memo,
+        private_owner_key: keys.private_owner,
+        private_active_key: keys.private_active,
+        private_posting_key: keys.private_posting,
+        private_memo_key: keys.private_memo,
+        public_owner_key: keys.public_owner,
+        public_active_key: keys.public_active,
+        public_posting_key: keys.public_posting,
+        public_memo_key: keys.public_memo,
       },
       withCredentials: true,
     })
@@ -78,11 +89,13 @@ export function SigVaultAdmin() {
             />
           </div>
           <div>
-            <label>private_owner_key:</label>
+            <label> private_owner_key:</label>
             <input
               type="password"
-              value={private_owner}
-              onChange={(e) => setOwner(e.target.value)}
+              value={keys.private_owner}
+              onChange={(e) =>
+                setKeys({ ...keys, private_owner: e.target.value })
+              }
               required
             />
           </div>
@@ -90,8 +103,10 @@ export function SigVaultAdmin() {
             <label> private_active_key:</label>
             <input
               type="password"
-              value={private_active}
-              onChange={(e) => setActive(e.target.value)}
+              value={keys.private_active}
+              onChange={(e) =>
+                setKeys({ ...keys, private_active: e.target.value })
+              }
               required
             />
           </div>
@@ -99,8 +114,10 @@ export function SigVaultAdmin() {
             <label> private_posting_key:</label>
             <input
               type="password"
-              value={private_posting}
-              onChange={(e) => setPosting(e.target.value)}
+              value={keys.private_posting}
+              onChange={(e) =>
+                setKeys({ ...keys, private_posting: e.target.value })
+              }
               required
             />
           </div>
@@ -108,8 +125,55 @@ export function SigVaultAdmin() {
             <label> private_memo_key:</label>
             <input
               type="password"
-              value={private_memo}
-              onChange={(e) => setMemo(e.target.value)}
+              value={keys.private_memo}
+              onChange={(e) =>
+                setKeys({ ...keys, private_memo: e.target.value })
+              }
+              required
+            />
+          </div>
+
+          <div>
+            <label> public_owner_key:</label>
+            <input
+              type="password"
+              value={keys.public_owner}
+              onChange={(e) =>
+                setKeys({ ...keys, public_owner: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label> public_active_key:</label>
+            <input
+              type="password"
+              value={keys.public_active}
+              onChange={(e) =>
+                setKeys({ ...keys, public_active: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label> public_posting_key:</label>
+            <input
+              type="password"
+              value={keys.public_posting}
+              onChange={(e) =>
+                setKeys({ ...keys, public_posting: e.target.value })
+              }
+              required
+            />
+          </div>
+          <div>
+            <label> public_memo_key:</label>
+            <input
+              type="password"
+              value={keys.public_memo}
+              onChange={(e) =>
+                setKeys({ ...keys, public_memo: e.target.value })
+              }
               required
             />
           </div>
