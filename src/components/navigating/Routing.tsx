@@ -9,6 +9,8 @@ import { SignRequestsPage } from '../page/SignRequestPage';
 import { TransactionPage } from '../page/TransactionsPage';
 import { TwoFactorAuthPage } from '../page/TwoFactorAuthPage';
 
+const UnderConstruction = () => <h1>🚧 This page is under construction 🚧</h1>;
+
 const Routing = () => {
   return (
     <div>
@@ -23,6 +25,7 @@ const Routing = () => {
         <Route path="/signRequest" element={<SignRequestsPage />} />
         <Route path="/twoFactor" element={<TwoFactorAuthPage />} />
         <Route path="/" element={<Landing />} />
+        <Route path="*" element={<UnderConstruction />} />
       </Routes>
     </div>
   );

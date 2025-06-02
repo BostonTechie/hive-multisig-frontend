@@ -1,98 +1,113 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import '../../css/style.css';
 
-export function Landing() {
-  const [email, setEmail] = useState('');
-  const [dataMine, setData] = useState([]);
-  const [password, setPassword] = useState('');
-  const [verifyPassword, setVerifyPassword] = useState('');
-  const baseURL = 'http://localhost:3000/';
-  // const baseURL = process.env.REACT_APP_BASE_URL; // Fallback URL
-  const dbURL = process.env.REACT_APP_DB_URL; // Fallback UR
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(process.env);
-    event.preventDefault();
-    axios({
-      method: 'POST',
-      url: baseURL,
-      data: {
-        email: email,
-        password: password,
-        verifyPassword: verifyPassword,
-      },
-      withCredentials: true,
-    }).catch((err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  };
-  console.log('Login Info:', { email, password });
-
-  useEffect(() => {
-    console.log(process.env, 'env');
-
-    if (!baseURL) {
-      console.error('BASE_URL is undefined! Check your .env configuration.');
-      return;
-    }
-
-    axios
-      .get(baseURL)
-      .then((response) => {
-        setData(response.data);
-        console.log('Fetching from:', baseURL);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
+export const Landing = () => {
   return (
-    <div
-      style={{
-        maxWidth: '300px',
-        margin: 'auto',
-        padding: '20px',
-        border: '1px solid #ccc',
-      }}>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Verify Password:</label>
-          <input
-            type="password"
-            value={verifyPassword}
-            onChange={(e) => setVerifyPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Register here</button>
-      </form>
+    <div>
+      <div className="box" data-model-id="217:3762-frame">
+        <div className="hero">
+          <div className="overlap">
+            <img
+              className="group"
+              alt="Group"
+              src="https://c.animaapp.com/qKu7C3UQ/img/group-1391.png"
+            />
 
-      <div>
-        {/* <h1>What's up, {JSON.stringify(dataMine)}</h1> */}
-        <p>Base URL: {baseURL} here</p>
+            <div className="shapes">
+              <div className="overlap-group">
+                <div className="ellipse" />
+
+                <div className="div" />
+
+                <div className="rectangle" />
+
+                <div className="rectangle-2" />
+
+                <div className="rectangle-3" />
+              </div>
+
+              <div className="overlap-2">
+                <div className="ellipse-2" />
+
+                <div className="rectangle-4" />
+
+                <div className="rectangle-5" />
+              </div>
+            </div>
+
+            <div className="top-banner">
+              <div className="overlap-3">
+                <div className="banner">
+                  <div className="rectangle-6" />
+                </div>
+
+                <img
+                  className="trim"
+                  alt="Trim"
+                  src="https://c.animaapp.com/qKu7C3UQ/img/trim.png"
+                />
+              </div>
+            </div>
+
+            <div className="rectangle-7" />
+
+            <div className="rectangle-8" />
+
+            <div className="rectangle-9" />
+
+            <div className="rectangle-10" />
+
+            <div className="buttons">
+              <div className="overlap-group-wrapper">
+                <div className="div-wrapper">
+                  <div className="text-wrapper">CREATE HIVE ACCOUNT</div>
+                </div>
+              </div>
+
+              <div className="overlap-wrapper">
+                <div className="overlap-4">
+                  <p className="p">SIGN UP / SIGN IN</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-logo">
+              <div className="overlap-5">
+                <div className="rectangle-11" />
+
+                <img
+                  className="sigvault-logo-mark"
+                  alt="Sigvault logo mark"
+                  src="https://c.animaapp.com/qKu7C3UQ/img/sigvault-logo-mark-final-complex-2.png"
+                />
+
+                <img
+                  className="img"
+                  alt="Sigvault logo mark"
+                  src="https://c.animaapp.com/qKu7C3UQ/img/sigvault-logo-mark-final-complex-3.png"
+                />
+              </div>
+            </div>
+
+            <p className="secure-multi">
+              Secure Multi-Signature Authentication
+              <br />
+              for Business Transactions
+            </p>
+
+            <p className="secure-multi-2">
+              Secure Multi-Signature Authentication
+              <br />
+              for Business Transactions
+            </p>
+
+            <p className="secure-multi-3">
+              Secure Multi-Signature Authentication
+              <br />
+              for Business Transactions
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};

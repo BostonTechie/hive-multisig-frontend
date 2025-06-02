@@ -5,7 +5,6 @@ import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import './App.css';
-import NavBar from './components/navigating/NavBar';
 import Routing from './components/navigating/Routing';
 import { Config } from './config';
 import { useAppDispatch, useAppSelector } from './redux/app/hooks';
@@ -322,18 +321,13 @@ function App() {
   };
 
   return (
-    <div className="App light">
-      app.tsx
-      <NavBar />
-      <div style={{ flex: 1 }}>
-        <Container
-          style={{
-            marginTop: 50,
-          }}>
-          <Routing />
-        </Container>
-      </div>
-      <div className="footer-text">@2025 Sig Vault</div>
+    <div style={{ flex: 1 }}>
+      <Container
+        style={{
+          marginTop: 50,
+        }}>
+        <Routing />
+      </Container>
     </div>
   );
 }

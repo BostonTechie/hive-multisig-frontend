@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
-import './index.css';
+import SigNav from './components/navigating/SigNav';
+
 import { persistor, store } from './redux/app/store';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     {' '}
-    src/index.tsx ..
     <PersistGate loading={null} persistor={persistor}>
-      <Router>
-        <App />
-      </Router>
+      <div className="@container">
+        <Router>
+          <SigNav />
+          <App />
+        </Router>
+      </div>
     </PersistGate>
   </Provider>,
 );
