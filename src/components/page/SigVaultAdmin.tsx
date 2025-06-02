@@ -25,12 +25,9 @@ export function SigVaultAdmin() {
     event.preventDefault();
 
     try {
-      const token = localStorage.getItem('jwtToken'); // 🔐 Retrieve the stored access token
-
       const response = await axios({
         method: 'POST',
         url: baseURL,
-        headers: { Authorization: `Bearer ${token}` }, // 🔐 Attach token
         data: {
           account: account,
           private_owner_key: keys.private_owner,

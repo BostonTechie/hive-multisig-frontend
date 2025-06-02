@@ -176,7 +176,7 @@ function App() {
   useEffect(() => {
     if (!isLoggedIn()) {
       handleLogout();
-      navigate('/login');
+      navigate('/');
     }
   });
 

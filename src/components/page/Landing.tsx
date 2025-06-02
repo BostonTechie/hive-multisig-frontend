@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-export function SigHome() {
+export function Landing() {
   const [email, setEmail] = useState('');
   const [dataMine, setData] = useState([]);
   const [password, setPassword] = useState('');

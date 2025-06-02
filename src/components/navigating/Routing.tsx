@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { Landing } from '../page/Landing';
 import LoginForm from '../page/LoginForm';
 import { DarkGridAuth } from '../page/MyPage';
 import { HomePage, SearchBar } from '../page/SearchPage';
@@ -21,7 +22,7 @@ const Routing = () => {
         <Route path="/transaction" element={<TransactionPage />} />
         <Route path="/signRequest" element={<SignRequestsPage />} />
         <Route path="/twoFactor" element={<TwoFactorAuthPage />} />
-        <Route path="/" element={<Navigate to={'/login'} />} />
+        <Route path="/" element={<Landing />} />
       </Routes>
     </div>
   );

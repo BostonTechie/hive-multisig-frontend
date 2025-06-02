@@ -85,7 +85,7 @@ const NavBar = () => {
   };
   useEffect(() => {
     if (!isLoggedIn && loginTimestamp === 0 && !accountDetails) {
-      setDestination('/login');
+      setDestination('/');
     }
   }, [isLoggedIn, loginTimestamp, accountDetails]);
 
@@ -196,6 +196,7 @@ const NavBar = () => {
             <h5 className="text-white">
               src/components/navigating/NavBar.tsx 196
             </h5>
+            <button type="submit">Register here</button>
           </Nav>
           {/* Search bar when collapsed and logged in
           <NavSearchBar
