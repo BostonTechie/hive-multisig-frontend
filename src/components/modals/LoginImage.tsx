@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useRef } from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 const notify = () => toast('Wow so easy !');
 
@@ -15,6 +15,7 @@ const LoginButton = {
   yMin: 55.3,
   yMax: 60.5,
 };
+const [showHighlight, setShowHighlight] = React.useState(false);
 
 const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -59,17 +60,33 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
               cursor: 'pointer',
               width: '50%',
             }}>
-            <img
-              ref={imageRef}
-              src="/img/loginModal.png"
-              alt="Login and Register pop-up for Sigvault"
-              style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
-              onClick={() => {
-                handleClick;
-                notify();
-              }}
-            />
+            {showHighlight && (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '30.5%',
+                  top: '55.3%',
+                  width: 'calc(69.45% - 30.5%)',
+                  height: 'calc(60.5% - 55.3%)',
+                  backgroundColor: 'rgba(0, 255, 34, 0.3)',
+                  borderRadius: '5px',
+                  transition: 'opacity 0.3s ease-in-out',
+                }}
+              />
+            )}
           </div>
+          <img
+            ref={imageRef}
+            src="/img/loginModal.png"
+            alt="Login and Register pop-up for Sigvault"
+            style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
+            onClick={(e) => {
+              handleClick(e);
+              notify();
+              setShowHighlight(!showHighlight);
+            }}
+          />
+          <ToastContainer />;
         </motion.div>
       )}
     </AnimatePresence>
