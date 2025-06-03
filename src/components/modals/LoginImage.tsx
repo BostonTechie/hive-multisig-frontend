@@ -15,7 +15,7 @@ const LoginButton = {
   yMin: 55.3,
   yMax: 60.5,
 };
-const [showHighlight, setShowHighlight] = React.useState(false);
+// const [showHighlight, setShowHighlight] = React.useState(false);
 
 const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
   const imageRef = useRef<HTMLImageElement>(null);
@@ -60,7 +60,7 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
               cursor: 'pointer',
               width: '50%',
             }}>
-            {showHighlight && (
+            {/* {showHighlight && (
               <div
                 style={{
                   position: 'absolute',
@@ -73,7 +73,7 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
                   transition: 'opacity 0.3s ease-in-out',
                 }}
               />
-            )}
+            )} */}
           </div>
           <img
             ref={imageRef}
@@ -83,7 +83,7 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
             onClick={(e) => {
               handleClick(e);
               notify();
-              setShowHighlight(!showHighlight);
+              // setShowHighlight(!showHighlight);
             }}
           />
           <ToastContainer />;
