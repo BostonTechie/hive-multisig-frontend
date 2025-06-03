@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import LoginModal from '../modals/LoginModal';
+import LoginImage from '../modals/LoginImage';
 
 const SigNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ const SigNav = () => {
                       onClick={() => setIsOpen(true)}>
                       Login/User
                     </button>
-                    <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <LoginImage isOpen={isOpen} setIsOpen={setIsOpen} />
                   </li>
                 </ul>
               </nav>
