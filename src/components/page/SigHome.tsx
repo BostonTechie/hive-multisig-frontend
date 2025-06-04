@@ -3,41 +3,14 @@ import React, { useEffect, useState } from 'react';
 
 export function SigHome() {
   const [email, setEmail] = useState('');
-  const [dataMine, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
-  const baseURL = 'http://localhost:3000/';
-  // const baseURL = process.env.REACT_APP_BASE_URL; // Fallback URL
-  const dbURL = process.env.REACT_APP_DB_URL; // Fallback UR
+  const [showVerify, setShowVerify] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(process.env);
-    event.preventDefault();
-    axios({
-      method: 'POST',
-      url: baseURL,
-      data: {
-        email: email,
-        password: password,
-        verifyPassword: verifyPassword,
-      },
-      withCredentials: true,
-    }).catch((err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  };
-  console.log('Login Info:', { email, password });
+  const baseURL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
-    console.log(process.env, 'env');
-
-    if (!baseURL) {
-      console.error('BASE_URL is undefined! Check your .env configuration.');
-      return;
-    }
-
     axios
       .get(baseURL)
       .then((response) => {
@@ -48,6 +21,25 @@ export function SigHome() {
         console.error('Error fetching data:', error);
       });
   }, []);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    axios
+      .post(
+        baseURL,
+        { email, password, verifyPassword },
+        { withCredentials: true },
+      )
+      .then((response) => console.log('Success:', response.data))
+      .catch((err) => console.error('Request failed:', err));
+  };
+
+  const handleClear = () => {
+    setEmail('');
+    setPassword('');
+    setVerifyPassword('');
+    setShowVerify(false);
+  };
 
   return (
     <div
@@ -68,15 +60,20 @@ export function SigHome() {
             required
           />
         </div>
+
         <div>
           <label>Password:</label>
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setShowVerify(e.target.value.length > 0);
+            }}
             required
           />
         </div>
+
         <div>
           <label>Verify Password:</label>
           <input
@@ -86,11 +83,17 @@ export function SigHome() {
             required
           />
         </div>
+
         <button type="submit">Register here</button>
+        <button
+          type="button"
+          onClick={handleClear}
+          style={{ marginLeft: '10px' }}>
+          Clear All
+        </button>
       </form>
 
       <div>
-        {/* <h1>What's up, {JSON.stringify(dataMine)}</h1> */}
         <p>Base URL: {baseURL} here</p>
       </div>
     </div>
