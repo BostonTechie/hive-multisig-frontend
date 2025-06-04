@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useRef } from 'react';
+import { Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -34,6 +35,12 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
                 className="max-w-full h-auto cursor-pointer"
                 onClick={() => notify()}
               />
+              <Button className="w-[25%] border-none absolute top-[60%]  left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-sigvault-gold text-sigvault-black px-4 py-2 rounded-lg font-extrabold">
+                Login
+              </Button>
+              <p className="text-3xl text-center underline w-[25%] border-none absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-105 transition duration-300">
+                or Register
+              </p>
             </div>
 
             {/* Toast Notification */}

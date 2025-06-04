@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .font-sigvault {
+    font-family: 'Raleway-ExtraBold', Helvetica;
+  }
+
+  .btn-gold {
+    @apply text-sigvault-black font-sigvault text-lg font-extrabold 
+           absolute text-center whitespace-nowrap w-[330px] tracking-widest;
+    left: 1px;
+    top: 14px;
+  }
+
+  .btn-gold:hover {
+    @apply bg-sigvault-light-gold;
+  }
+}
+
 @theme {
   --body-text: rgba(173, 170, 159, 1);
   --sigvault-base-brown: rgba(67, 56, 55, 1);
