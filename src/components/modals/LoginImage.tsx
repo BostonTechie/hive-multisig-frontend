@@ -70,7 +70,7 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
                       </label>
                       <input
                         type="password"
-                        className="w-full border border-[#917c67] text-[#262425] bg-[#262425] px-4 py-2 rounded-lg transition duration-300"
+                        className="w-full border border-[#917c67] text-[#262425] bg-[#262425] px-4 py-2 pt-2 rounded-lg hover:bg-sigvault-light-gold hover:scale-110 transition duration-300"
                       />
                     </div>
                   </>
@@ -89,12 +89,21 @@ const LoginImage: React.FC<LoginImageProps> = ({ isOpen, setIsOpen }) => {
                   Register
                 </Button>
               )}
+              {!showVerify && (
+                <p
+                  onClick={() => setShowVerify(!showVerify)}
+                  className="text-xl text-center underline w-[35%] border-none absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
+                  or Register
+                </p>
+              )}
 
-              <p
-                onClick={() => setShowVerify(!showVerify)}
-                className="text-xl text-center underline w-[35%] border-none absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
-                or Register
-              </p>
+              {showVerify && (
+                <p
+                  onClick={() => setShowVerify(!showVerify)}
+                  className="text-xl text-center underline w-[35%] border-none absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
+                  or Login
+                </p>
+              )}
 
               {/* Keychain Button */}
               <img
