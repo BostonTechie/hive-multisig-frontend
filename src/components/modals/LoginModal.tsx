@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { BadgeCheck, CircleAlert, Info, TriangleAlert } from 'lucide-react';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000/';
@@ -20,6 +21,7 @@ const notify = (type: string, data: string) => {
 };
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate();
   const imageRef = useRef<HTMLImageElement>(null);
   const [email, setEmail] = useState('');
   const [data, setData] = useState([]);
@@ -41,32 +43,33 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (
-      verifyPassword !== null ||
-      verifyPassword !== undefined ||
-      verifyPassword !== ''
-    ) {
+
+    if (!verifyPassword) {
       if (verifyPassword !== password) {
-        notify('error', 'passwords do not match');
-      } else {
-        axios
-          .post(
-            baseURL,
-            { email, password, verifyPassword },
-            { withCredentials: true },
-          )
-          .then((response) => notify('success:', response.data))
-          .catch((err) => console.log('error', err));
+        notify('error', 'Passwords do not match');
+        return;
       }
-    }
+    } else
+      axios
+        .post(
+          baseURL,
+          { email, password, verifyPassword },
+          { withCredentials: true },
+        )
+        .then((response) => {
+          notify('success', response.data.message || 'Login successful!');
+          navigate('#/sig'); // Redirect user correctly
+        })
+        .catch((err) => {
+          notify('error', 'Login failed!');
+          console.error('Error:', err);
+        });
   };
 
   const handleClear = () => {
-    setEmail('');
     setPassword('');
     setVerifyPassword('');
-    setShowVerify(false);
-    notify('info', 'input fields cleared');
+    notify('info', 'password fields cleared');
   };
 
   return (
