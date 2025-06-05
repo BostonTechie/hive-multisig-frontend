@@ -50,21 +50,22 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
         notify('error', 'Passwords do not match');
         return;
       }
-    } else
-      axios
-        .post(
-          urlDynamic,
-          { email, password, verifyPassword },
-          { withCredentials: true },
-        )
-        .then((response) => {
-          notify('success', response.data.message || 'Login successful!');
-          navigate('#/sig'); // Redirect user correctly
-        })
-        .catch((err) => {
-          notify('error', err.response?.data?.message || 'Login failed!');
-          console.error('Error:', err);
-        });
+    }
+
+    axios
+      .post(
+        urlDynamic,
+        { email, password, verifyPassword },
+        { withCredentials: true },
+      )
+      .then((response) => {
+        notify('success', response.data.message || 'Login successful!');
+        navigate('/sig'); // Redirect user correctly
+      })
+      .catch((err) => {
+        notify('error', err.response?.data?.message || 'Login failed!');
+        console.error('Error:', err);
+      });
   };
 
   const handleClear = () => {
