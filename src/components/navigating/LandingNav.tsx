@@ -1,33 +1,6 @@
 import { useState } from 'react';
 import LoginModal from '../modals/LoginModal';
 
-const SigNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <>
-      <div className="bg-black">
-        <div className="mx-auto flex max-w-7xl items-center justify-between bg-black">
-          <Logo />
-          <LandingNav />
-        </div>
-      </div>
-    </>
-  );
-};
-
-const Logo = () => {
-  return (
-    <div className="flex items-center gap-2">
-      <img
-        alt="Sigvault logo mark"
-        src="https://c.animaapp.com/eCU0anp8/img/sigvault-logo-mark-final-complex-2@2x.png"
-        loading="lazy"
-      />
-    </div>
-  );
-};
-
 const LandingNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -69,4 +42,4 @@ const LandingNav = () => {
     </div>
   );
 };
-export default SigNav;
+export default LandingNav;
