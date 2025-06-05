@@ -28,23 +28,24 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
   const [showVerify, setShowVerify] = useState(false);
+  const [urlDynamic, setUrl] = useState(`${baseURL}login`);
 
   useEffect(() => {
     axios
-      .get(baseURL)
+      .get(urlDynamic)
       .then((response) => {
         setData(response.data);
-        console.log('Fetching from:', baseURL);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [urlDynamic]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!verifyPassword) {
+    if (showVerify) {
+      // Only validate passwords for registration
       if (verifyPassword !== password) {
         notify('error', 'Passwords do not match');
         return;
@@ -52,7 +53,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
     } else
       axios
         .post(
-          baseURL,
+          urlDynamic,
           { email, password, verifyPassword },
           { withCredentials: true },
         )
@@ -61,7 +62,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
           navigate('#/sig'); // Redirect user correctly
         })
         .catch((err) => {
-          notify('error', 'Login failed!');
+          notify('error', err.response?.data?.message || 'Login failed!');
           console.error('Error:', err);
         });
   };
@@ -168,17 +169,30 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                 )}
                 {!showVerify && (
                   <p
-                    onClick={() => setShowVerify(!showVerify)}
+                    onClick={() => {
+                      setShowVerify((prev) => !prev);
+                      setUrl((prevUrl) =>
+                        prevUrl === `${baseURL}login` ? `${baseURL}` : prevUrl,
+                      );
+                    }}
                     className="text-xl text-center underline w-[35%] border-none absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
                     or Register
                   </p>
                 )}
-
+                <p
+                  onClick={() => {
+                    notify('info', urlDynamic);
+                  }}
+                  className="text-xl text-center underline w-[35%] border-none absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
+                  url
+                </p>
                 {showVerify && (
                   <p
                     onClick={() => {
                       setShowVerify(!showVerify);
                       handleClear();
+                      if (urlDynamic !== `${baseURL}login`)
+                        setUrl(`${baseURL}login`);
                     }}
                     className="text-xl text-center underline w-[35%] border-none absolute top-[66%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
                     or Login
