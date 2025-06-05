@@ -6,6 +6,8 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../../auth/Context';
+
 const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000/';
 
 interface LoginModalProps {
@@ -29,6 +31,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const [verifyPassword, setVerifyPassword] = useState('');
   const [showVerify, setShowVerify] = useState(false);
   const [urlDynamic, setUrl] = useState(`${baseURL}login`);
+
+  const { login } = useAuth();
 
   useEffect(() => {
     axios
