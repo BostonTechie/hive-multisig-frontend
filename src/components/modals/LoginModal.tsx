@@ -60,7 +60,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
       )
       .then((response) => {
         notify('success', response.data.message || 'Login successful!');
-        navigate('/sig'); // Redirect user correctly
+        navigate('/sig');
+        setIsOpen(false);
       })
       .catch((err) => {
         notify('error', err.response?.data?.message || 'Login failed!');
