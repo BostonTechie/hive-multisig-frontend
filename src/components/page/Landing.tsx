@@ -17,11 +17,6 @@ export const Landing = () => {
           </div>
         </div>
       </div>
-
-      {/* <div classNameName="fixed w-[100%] pb-5">
-        <SigNav />
-      </div>
-       */}
     </>
   );
 };

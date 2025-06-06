@@ -32,7 +32,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const [showVerify, setShowVerify] = useState(false);
   const [urlDynamic, setUrl] = useState(`${baseURL}login`);
 
-  const { login } = useAuth();
+  const { isLoggedIn, user, login, logout } = useAuth();
 
   useEffect(() => {
     axios
@@ -64,6 +64,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
       )
       .then((response) => {
         notify('success', response.data.message || 'Login successful!');
+        // Update auth context with user data
+        login({ email });
         navigate('/dashboard');
         setIsOpen(false);
       })

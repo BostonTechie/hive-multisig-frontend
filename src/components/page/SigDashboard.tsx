@@ -4,19 +4,19 @@ import SigNav from '../navigating/SigNav';
 export const SigDashBoard = () => {
   return (
     <>
-      <SigNav />
-      <div className="bg-inherit grid grid-flow-col grid-rows-4 gap-4">
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-
-        <div>09</div>
+      <div className="flex w-full">
+        <div className="grid-rows-2  w-full">
+          <div className="fixed w-full">
+            <SigNav />
+          </div>
+          <div>
+            <img
+              src="/img/SigBackgroundDashboard.png"
+              alt="Dashboard page for Sigvault"
+              className="w-full h-auto cursor-pointer"
+            />
+          </div>
+        </div>
       </div>
     </>
   );
