@@ -3,6 +3,7 @@ import { Landing } from '../page/Landing';
 import LoginForm from '../page/LoginForm';
 import { DarkGridAuth } from '../page/MyPage';
 import { HomePage, SearchBar } from '../page/SearchPage';
+import { SigDashBoard } from '../page/SigDashboard';
 import { SigHome } from '../page/SigHome';
 import { SigVaultAdmin } from '../page/SigVaultAdmin';
 import { SignRequestsPage } from '../page/SignRequestPage';
@@ -16,6 +17,7 @@ const Routing = () => {
     <div>
       <Routes>
         <Route path="/:id" element={<HomePage />} />
+        <Route path="/dashboard" element={<SigDashBoard />} />
         <Route path="/my" element={<DarkGridAuth />} />
         <Route path="/admin" element={<SigVaultAdmin />} />
         <Route path="/sig" element={<SigHome />} />

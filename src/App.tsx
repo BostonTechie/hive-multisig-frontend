@@ -1,7 +1,6 @@
 import { HiveMultisig } from 'hive-multisig-sdk/src';
 import { SignatureRequest } from 'hive-multisig-sdk/src/interfaces/signature-request';
 import { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import './App.css';
@@ -320,15 +319,6 @@ function App() {
     setMultisig(undefined);
   };
 
-  return (
-    <div style={{ flex: 1 }}>
-      <Container
-        style={{
-          marginTop: 50,
-        }}>
-        <Routing />
-      </Container>
-    </div>
-  );
+  return <Routing />;
 }
 export default App;

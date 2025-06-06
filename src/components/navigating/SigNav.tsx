@@ -3,7 +3,6 @@ import { useAuth } from '../../auth/Context';
 import LoginModal from '../modals/LoginModal';
 
 const SigNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn } = useAuth();
   return (
     <>
@@ -34,7 +33,7 @@ const Logo = () => {
 const LandingNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="hidden gap-6 lg:flex">
+    <div className="w-[100] hidden gap-6 lg:flex m-auto">
       <div className="mt-4 md:mt-2 text-right md:ml-auto">
         <nav className="text-2xl text-right text-sigvault-cream">
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">

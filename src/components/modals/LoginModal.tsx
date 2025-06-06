@@ -64,7 +64,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
       )
       .then((response) => {
         notify('success', response.data.message || 'Login successful!');
-        navigate('/sig');
+        navigate('/dashboard');
         setIsOpen(false);
       })
       .catch((err) => {
@@ -185,13 +185,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                     or Register
                   </p>
                 )}
-                <p
-                  onClick={() => {
-                    notify('info', urlDynamic);
-                  }}
-                  className="text-xl text-center underline w-[35%] border-none absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:text-sigvault-light-gold hover:scale-110 transition duration-300">
-                  url
-                </p>
+
                 {showVerify && (
                   <p
                     onClick={() => {
