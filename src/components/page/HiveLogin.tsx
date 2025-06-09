@@ -19,7 +19,7 @@ import {
 import { MultisigUtils } from '../../utils/multisig.utils';
 import { getTimestampInSeconds } from '../../utils/utils';
 
-const LoginForm = () => {
+const HiveLogin = () => {
   const [multisig, setMultisig] = useState<HiveMultisig>(undefined);
   const [posting, setPosting] = useState(true);
   const [active, setActive] = useState(true);
@@ -65,12 +65,12 @@ const LoginForm = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (isLoggedIn && accountDetails) {
-      navigate(`/transaction`);
-    } else {
-    }
-  }, [accountDetails]);
+  // useEffect(() => {
+  //   if (isLoggedIn && accountDetails) {
+  //     navigate(`/dashboard`);
+  //   } else {
+  //   }
+  // }, [accountDetails]);
 
   useEffect(() => {
     if (isLoginSucceed) {
@@ -206,31 +206,53 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
-        <div className="bg-orange-500">
-          <InputGroup className="mb-3">
-            <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-            <Form.Control
-              placeholder={username !== '' ? username : 'Username'}
-              aria-label="Username"
-              aria-describedby="basic-addon2"
-              onChange={(e) => setUsername(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              value={username}
-              ref={inputRef}
+    <div
+      className="grid grid-cols-3  grid-rows-3 gap-4 h-screen w-screen"
+      style={{ gridTemplateRows: '10vh 80vh 10vh' }}>
+      <div className="bg-customDark grid grid-flow-col grid-rows-3 mx-auto col-start-2 row-start-2">
+        <ul className="bg-customDark">
+          <li>
+            <img
+              src="/img/KeychainModal.png"
+              alt="Login with Hive Keychain"
+              className="row-start-2"
+              onClick={() => alert('Button clicked!')}
             />
-            <h5 className="text-black">loginform.tsx 223</h5>
-            <Button
-              variant="outline-secondary"
-              id="button-addon2"
-              onClick={() => handleOnLoginSubmit()}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}>
-              Login
-            </Button>
-          </InputGroup>
+          </li>
+          <li className="pb-6">
+            <a
+              href="https://hive-keychain.com/"
+              className="text-blue-500 underline underline-offset-4 flex justify-center items-center"
+              target="_blank"
+              rel="noopener noreferrer">
+              Hive-KeyChain Link
+            </a>
+          </li>
+          <li className="flex justify-center items-center w-[100%]">
+            <InputGroup className="row-start-2 h-[15%] w-[85%] pb-4">
+              <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+              <Form.Control
+                placeholder={username !== '' ? username : 'Username'}
+                aria-label="Username"
+                aria-describedby="basic-addon2"
+                onChange={(e) => setUsername(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                value={username}
+                ref={inputRef}
+              />
+
+              <Button
+                variant="outline-secondary"
+                id="button-addon2"
+                className="bg-sigvault-gold text-black"
+                onClick={() => handleOnLoginSubmit()}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}>
+                Login
+              </Button>
+            </InputGroup>
+          </li>
           <div
             style={{
               display: 'flex',
@@ -241,34 +263,22 @@ const LoginForm = () => {
             <Form.Check
               type={'checkbox'}
               label={`Posting Key`}
+              className="text-sigvault-cream"
               checked={posting}
-              onChange={() => {
-                setPosting(!posting);
-              }}
+              onChange={() => setPosting(!posting)}
             />
-            <h5 className="textblack">loginform.tsx 243</h5>
             <Form.Check
               type={'checkbox'}
+              className="text-sigvault-cream"
               label={`Active Key`}
               checked={active}
-              onChange={() => {
-                setActive(!active);
-              }}
+              onChange={() => setActive(!active)}
             />
           </div>
-        </div>
-        <div className="bg-pink-500">
-          src/components/page/LoginForm.tsx
-          <img
-            alt="Golden safe with Red letter S logo"
-            src="img/svLogin.jpg"
-            className="object-cover"
-            style={{ marginRight: 10 }}
-          />{' '}
-        </div>
+        </ul>
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default HiveLogin;

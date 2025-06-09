@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import Hivelogin from '../page/HiveLogin';
 import { Landing } from '../page/Landing';
-import LoginForm from '../page/LoginForm';
 import { DarkGridAuth } from '../page/MyPage';
 import { HomePage, SearchBar } from '../page/SearchPage';
 import { SigDashBoard } from '../page/SigDashboard';
@@ -22,7 +22,7 @@ const Routing = () => {
         <Route path="/admin" element={<SigVaultAdmin />} />
         <Route path="/sig" element={<SigHome />} />
         <Route path="/search" element={<SearchBar />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<Hivelogin />} />
         <Route path="/transaction" element={<TransactionPage />} />
         <Route path="/signRequest" element={<SignRequestsPage />} />
         <Route path="/twoFactor" element={<TwoFactorAuthPage />} />
