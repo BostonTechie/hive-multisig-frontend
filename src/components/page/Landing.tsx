@@ -1,4 +1,5 @@
 import '../../css/style.css';
+import FooterNav from '../navigating/Footer';
 import SigNav from '../navigating/SigNav';
 export const Landing = () => {
   return (
@@ -16,6 +17,9 @@ export const Landing = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="w-full">
+        <FooterNav />
       </div>
     </>
   );
