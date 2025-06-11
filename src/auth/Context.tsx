@@ -3,6 +3,7 @@ import {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 
@@ -26,8 +27,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [showVerify, setShowVerify] = useState(false);
 
   useEffect(() => {
-    setShowVerify(false);
-  }, []);
+    if (showVerify) {
+      setShowVerify(false);
+    }
+  }, [showVerify]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -49,10 +52,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoggedIn(false);
   };
 
+  // Memoize context value to optimize performance
+  const contextValue = useMemo(
+    () => ({ isLoggedIn, user, login, logout }),
+    [isLoggedIn, user],
+  );
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 
