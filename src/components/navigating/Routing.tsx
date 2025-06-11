@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Hivelogin from '../page/HiveLogin';
 import { Landing } from '../page/Landing';
 import { DarkGridAuth } from '../page/MyPage';
@@ -9,8 +9,7 @@ import { SigVaultAdmin } from '../page/SigVaultAdmin';
 import { SignRequestsPage } from '../page/SignRequestPage';
 import { TransactionPage } from '../page/TransactionsPage';
 import { TwoFactorAuthPage } from '../page/TwoFactorAuthPage';
-
-const UnderConstruction = () => <h1>🚧 This page is under construction 🚧</h1>;
+import UnderConstruction from './UnderConst';
 
 const Routing = () => {
   return (
@@ -26,7 +25,8 @@ const Routing = () => {
         <Route path="/transaction" element={<TransactionPage />} />
         <Route path="/signRequest" element={<SignRequestsPage />} />
         <Route path="/twoFactor" element={<TwoFactorAuthPage />} />
-        <Route path="/" element={<Landing />} />
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/" element={<Navigate to="/landing" replace />} />
         <Route path="*" element={<UnderConstruction />} />
       </Routes>
     </div>
