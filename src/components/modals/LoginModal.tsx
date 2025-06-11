@@ -4,9 +4,10 @@ import { BadgeCheck, CircleAlert, Info, TriangleAlert } from 'lucide-react';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../../auth/Context';
+import { Toastify } from '../../utils/toastify';
 
 const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000/';
 
@@ -14,13 +15,6 @@ interface LoginModalProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
-
-const notify = (type: string, data: string) => {
-  if (type === 'info') toast.info(data);
-  if (type === 'error') toast.error(data);
-  if (type === 'success') toast.success(data);
-  if (type === 'warning') toast.warning('Wow so easy !');
-};
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
@@ -32,7 +26,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const [showVerify, setShowVerify] = useState(false);
   const [urlDynamic, setUrl] = useState(`${baseURL}login`);
 
-  const { isLoggedIn, user, login, logout } = useAuth();
+  const { login } = useAuth();
 
   useEffect(() => {
     axios
@@ -51,7 +45,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
     if (showVerify) {
       // Only validate passwords for registration
       if (verifyPassword !== password) {
-        notify('error', 'Passwords do not match');
+        Toastify('error', 'Passwords do not match');
         return;
       }
     }
@@ -63,14 +57,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
         { withCredentials: true },
       )
       .then((response) => {
-        notify('success', response.data.message || 'Login successful!');
+        Toastify('success', response.data.message || 'Login successful!');
         // Update auth context with user data
         login({ email });
         navigate('/dashboard');
         setIsOpen(false);
       })
       .catch((err) => {
-        notify('error', err.response?.data?.message || 'Login failed!');
+        Toastify('error', err.response?.data?.message || 'Login failed!');
         console.error('Error:', err);
       });
   };
@@ -78,7 +72,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const handleClear = () => {
     setPassword('');
     setVerifyPassword('');
-    notify('info', 'password fields cleared');
+    Toastify('info', 'password fields cleared');
   };
 
   return (

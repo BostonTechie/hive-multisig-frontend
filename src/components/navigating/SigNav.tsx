@@ -4,6 +4,7 @@ import LoginModal from '../modals/LoginModal';
 
 const SigNav = () => {
   const { isLoggedIn } = useAuth();
+
   return (
     <>
       <div className="bg-black min-h-24 ">
@@ -73,6 +74,8 @@ const LandingNav = () => {
 };
 
 const AppNav = () => {
+  const { logout } = useAuth();
+
   return (
     <div className="hidden gap-6 lg:flex">
       <div className="mt-4 md:mt-2 text-right md:ml-auto">
@@ -103,6 +106,11 @@ const AppNav = () => {
                 Settings
               </a>
             </li>
+            <button
+              className="bg-sigvault-gold text-black rounded-lg h-10 px-4 py-1 bottom-8 font-bold hover:bg-red-500"
+              onClick={() => logout()}>
+              Logout
+            </button>
           </ul>
         </nav>
       </div>
