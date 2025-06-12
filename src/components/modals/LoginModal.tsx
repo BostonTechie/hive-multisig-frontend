@@ -24,7 +24,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const [data, setData] = useState([]);
   let [password, setPassword] = useState('');
   let [verifyPassword, setVerifyPassword] = useState('');
-  const [showVerify, setShowVerify] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
   const [urlDynamic, setUrl] = useState(`${baseURL}login`);
 
   const { login } = useAuth();
@@ -46,7 +46,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
     password = stripHtml(password);
     verifyPassword = stripHtml(verifyPassword);
 
-    if (showVerify) {
+    if (showRegister) {
       // Only validate passwords for registration
       if (verifyPassword !== password) {
         Toastify('error', 'Passwords do not match');
@@ -133,7 +133,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                     className="w-full border border-[#917c67] text-red-400 bg-[#262425] px-4 py-2 pt-2 rounded-lg hover:scale-110 transition duration-300"
                   />
 
-                  {showVerify && (
+                  {showRegister && (
                     <>
                       <br></br>
                       <div className="relative w-[100%]">
@@ -153,7 +153,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                 </div>
 
                 {/* Login Button */}
-                {!showVerify && (
+                {!showRegister && (
                   <Button
                     type="submit"
                     className="w-[25%] border-none absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-sigvault-gold text-sigvault-black px-4 py-2 rounded-lg font-extrabold">
@@ -166,17 +166,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                   clear form
                 </p>
 
-                {showVerify && (
+                {showRegister && (
                   <Button
                     type="submit"
                     className="w-[25%] border-none absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-sigvault-gold text-sigvault-black px-4 py-2 rounded-lg font-extrabold">
                     Register
                   </Button>
                 )}
-                {!showVerify && (
+                {!showRegister && (
                   <p
                     onClick={() => {
-                      setShowVerify((prev) => !prev);
+                      setShowRegister((prev) => !prev);
                       setUrl((prevUrl) =>
                         prevUrl === `${baseURL}login` ? `${baseURL}` : prevUrl,
                       );
@@ -186,10 +186,10 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                   </p>
                 )}
 
-                {showVerify && (
+                {showRegister && (
                   <p
                     onClick={() => {
-                      setShowVerify(!showVerify);
+                      setShowRegister(!showRegister);
                       handleClear();
                       if (urlDynamic !== `${baseURL}login`)
                         setUrl(`${baseURL}login`);
