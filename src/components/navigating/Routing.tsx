@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { useAuth } from '../../auth/Context';
+import { useAuth } from '../../Context/Context';
 import Hivelogin from '../page/HiveLogin';
 import { Landing } from '../page/Landing';
 import { DarkGridAuth } from '../page/MyPage';

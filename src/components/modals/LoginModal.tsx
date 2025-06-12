@@ -1,4 +1,5 @@
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BadgeCheck, CircleAlert, Info, TriangleAlert } from 'lucide-react';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
@@ -6,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAuth } from '../../auth/Context';
+import { useAuth } from '../../Context/Context';
 import { Toastify } from '../../utils/toastify';
 
 const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000/';
@@ -41,6 +42,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const cleanEmail = DOMPurify.sanitize(email.trim());
 
     if (showVerify) {
       // Only validate passwords for registration
@@ -53,7 +55,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
     axios
       .post(
         urlDynamic,
-        { email, password, verifyPassword },
+        { email: cleanEmail, password, verifyPassword },
         { withCredentials: true },
       )
       .then((response) => {
@@ -206,6 +208,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
 
               <ToastContainer
                 position="top-left"
+                autoClose={15000}
                 icon={({ type }) => {
                   // theme is not used in this example but you could
                   switch (type) {

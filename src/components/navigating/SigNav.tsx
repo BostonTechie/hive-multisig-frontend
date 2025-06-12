@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from '../../auth/Context';
+import { useAuth } from '../../Context/Context';
 import LoginModal from '../modals/LoginModal';
 
 const SigNav = () => {

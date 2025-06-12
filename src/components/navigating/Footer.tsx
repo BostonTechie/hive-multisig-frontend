@@ -1,4 +1,4 @@
-import { useAuth } from '../../auth/Context';
+import { useAuth } from '../../Context/Context';
 
 const FooterNav = () => {
   const { isLoggedIn } = useAuth();
