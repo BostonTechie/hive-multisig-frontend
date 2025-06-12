@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAuth } from '../../Context/Context';
+import { stripHtml, useAuth } from '../../Context/Context';
 import { Toastify } from '../../utils/toastify';
 
 const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000/';
@@ -22,8 +22,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [email, setEmail] = useState('');
   const [data, setData] = useState([]);
-  const [password, setPassword] = useState('');
-  const [verifyPassword, setVerifyPassword] = useState('');
+  let [password, setPassword] = useState('');
+  let [verifyPassword, setVerifyPassword] = useState('');
   const [showVerify, setShowVerify] = useState(false);
   const [urlDynamic, setUrl] = useState(`${baseURL}login`);
 
@@ -43,6 +43,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const cleanEmail = DOMPurify.sanitize(email.trim());
+    password = stripHtml(password);
+    verifyPassword = stripHtml(verifyPassword);
 
     if (showVerify) {
       // Only validate passwords for registration
