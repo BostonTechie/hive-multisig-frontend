@@ -33,6 +33,7 @@ const Logo = () => {
 
 const LandingNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hiveisOpen, setHiveIsOpen] = useState(false);
   return (
     <div className="w-[100] hidden gap-6 lg:flex m-auto">
       <div className="mt-4 md:mt-2 text-right md:ml-auto">
@@ -64,7 +65,12 @@ const LandingNav = () => {
                 onClick={() => setIsOpen(true)}>
                 Login/User
               </button>
-              <LoginModal isOpen={isOpen} setIsOpen={setIsOpen} />
+              <LoginModal
+                hiveIsOpen={hiveisOpen}
+                setHiveIsOpen={setHiveIsOpen}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
             </li>
           </ul>
         </nav>

@@ -1,7 +1,6 @@
-import { HiveMultisig } from 'hive-multisig-sdk/src';
-
 import { AnimatePresence } from 'framer-motion';
 import { KeychainKeyTypes } from 'hive-keychain-commons';
+import { HiveMultisig } from 'hive-multisig-sdk/src';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -20,12 +19,12 @@ import {
 import { MultisigUtils } from '../../utils/multisig.utils';
 import { getTimestampInSeconds } from '../../utils/utils';
 
-interface LoginModalProps {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+interface HiveModalProps {
+  hiveIsOpen: boolean;
+  setHiveIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const HiveLogin: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
+const HiveLogin: React.FC<HiveModalProps> = ({ hiveIsOpen, setHiveIsOpen }) => {
   const [multisig, setMultisig] = useState<HiveMultisig>(undefined);
   const [posting, setPosting] = useState(true);
   const [active, setActive] = useState(true);
@@ -214,17 +213,14 @@ const HiveLogin: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {' '}
-      <div
-        className="grid grid-cols-3  grid-rows-3 gap-4 h-screen w-screen"
-        style={{ gridTemplateRows: '10vh 80vh 10vh' }}>
-        <div className="bg-customDark grid grid-flow-col grid-rows-3 mx-auto col-start-2 row-start-2">
+      <div className="min-h-[50vh] min-w-[50vh] absolute top-0 left-0 z-50">
+        <div className="bg-customDark">
           <ul className="bg-customDark">
             <li>
               <img
                 src="/img/KeychainModal.png"
                 alt="Login with Hive Keychain"
-                className="row-start-2"
-                onClick={() => alert('Button clicked!')}
+                className="row-start-2 col-start-2"
               />
             </li>
             <li className="pb-6">
@@ -237,7 +233,7 @@ const HiveLogin: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
               </a>
             </li>
             <li className="flex justify-center items-center w-[100%]">
-              <InputGroup className="row-start-2 h-[15%] w-[85%] pb-4">
+              <InputGroup className="row-start-2 h-[10%] w-[100%] pb-4">
                 <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                 <Form.Control
                   placeholder={username !== '' ? username : 'Username'}
@@ -265,22 +261,29 @@ const HiveLogin: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
               style={{
                 display: 'flex',
                 flexDirection: 'row',
-                columnGap: '20px',
+                columnGap: '10px',
               }}>
-              Login with:
+              <p className="text-sigvault-cream  text-sm">Login with:</p>
               <Form.Check
                 type={'checkbox'}
                 label={`Posting Key`}
-                className="text-sigvault-cream"
+                className="text-sigvault-cream  text-sm"
                 checked={posting}
                 onChange={() => setPosting(!posting)}
               />
               <Form.Check
                 type={'checkbox'}
-                className="text-sigvault-cream"
+                className="text-sigvault-cream text-sm"
                 label={`Active Key`}
                 checked={active}
                 onChange={() => setActive(!active)}
+              />
+
+              <Form.Check
+                type={'checkbox'}
+                className="text-red-500 text-sm pl-[20%]"
+                label={`Close`}
+                onChange={() => setHiveIsOpen(!hiveIsOpen)}
               />
             </div>
           </ul>

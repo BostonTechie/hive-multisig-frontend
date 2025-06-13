@@ -9,15 +9,23 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { stripHtml, useAuth } from '../../Context/Context';
 import { Toastify } from '../../utils/toastify';
+import HiveLogin from './HiveLogin';
 
 const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000/';
 
 interface LoginModalProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  hiveIsOpen: boolean;
+  setHiveIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
+const LoginModal: React.FC<LoginModalProps> = ({
+  isOpen,
+  setIsOpen,
+  hiveIsOpen,
+  setHiveIsOpen,
+}) => {
   const navigate = useNavigate();
   const imageRef = useRef<HTMLImageElement>(null);
   const [email, setEmail] = useState('');
@@ -204,8 +212,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, setIsOpen }) => {
                   src="/img/keychain button.png"
                   alt="Login with Hive Keychain"
                   className="w-[45%] border-none absolute top-[88%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sigvault-gold px-4 py-2 rounded-lg hover:scale-110 transition duration-300"
-                  onClick={() => alert('Button clicked!')}
+                  onClick={() => setHiveIsOpen((prevState) => !prevState)}
                 />
+                {hiveIsOpen && (
+                  <HiveLogin
+                    hiveIsOpen={hiveIsOpen}
+                    setHiveIsOpen={setHiveIsOpen}
+                  />
+                )}
               </div>
 
               <ToastContainer
