@@ -1,7 +1,7 @@
 import { useAuth } from '../../Context/Context';
 
 const FooterNav = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedInSig } = useAuth();
   return (
     <>
       <div className=" bg-black grid grid-cols-8 gap-4 min-h-min 100">

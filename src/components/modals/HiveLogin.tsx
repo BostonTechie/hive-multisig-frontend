@@ -6,6 +6,7 @@ import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import { Config } from '../../config';
+import { useAuth } from '../../Context/Context';
 import { useAppDispatch, useAppSelector } from '../../redux/app/hooks';
 import { login } from '../../redux/features/login/loginSlice';
 import {
@@ -20,14 +21,15 @@ import { MultisigUtils } from '../../utils/multisig.utils';
 import { getTimestampInSeconds } from '../../utils/utils';
 
 interface HiveModalProps {
-  hiveIsOpen: boolean;
-  setHiveIsOpen: Dispatch<SetStateAction<boolean>>;
+  hiveIsOpen?: boolean;
+  setHiveIsOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 const HiveLogin: React.FC<HiveModalProps> = ({ hiveIsOpen, setHiveIsOpen }) => {
   const [multisig, setMultisig] = useState<HiveMultisig>(undefined);
   const [posting, setPosting] = useState(true);
   const [active, setActive] = useState(true);
+  const { setIsLoggedIn } = useAuth();
 
   const loginExpirationInSec = Config.login.expirationInSec;
 
@@ -69,13 +71,6 @@ const HiveLogin: React.FC<HiveModalProps> = ({ hiveIsOpen, setHiveIsOpen }) => {
       );
     }
   }, []);
-
-  // useEffect(() => {
-  //   if (isLoggedIn && accountDetails) {
-  //     navigate(`/dashboard`);
-  //   } else {
-  //   }
-  // }, [accountDetails]);
 
   useEffect(() => {
     if (isLoginSucceed) {
@@ -205,6 +200,10 @@ const HiveLogin: React.FC<HiveModalProps> = ({ hiveIsOpen, setHiveIsOpen }) => {
       if (!active && !posting) alert(`Choose at least one login method!`);
       if (posting) await connectPosting();
       if (active) await connectActive();
+
+      setIsLoggedIn(true);
+      setHiveIsOpen(!hiveIsOpen);
+      navigate(`/dashboard`);
     } catch (error) {
       alert(`Login Failed loginform 204 \n ${error.message}`);
     }

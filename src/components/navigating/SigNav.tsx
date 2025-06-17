@@ -3,16 +3,19 @@ import { useAuth } from '../../Context/Context';
 import LoginModal from '../modals/LoginModal';
 
 const SigNav = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedInSig } = useAuth();
 
   return (
     <>
       <div className="bg-black min-h-24 ">
         <div className=" mx-auto flex max-w-7xl items-center justify-between bg-black">
           <Logo />
-          {!isLoggedIn && <LandingNav />}
-          {isLoggedIn && <AppNav />}
+          {!isLoggedInSig && <LandingNav />}
+          {isLoggedInSig && <AppNav />}
         </div>
+        <p className="text-sigvault-cream">
+          is logged in: {isLoggedInSig.toString()}
+        </p>
       </div>
     </>
   );
@@ -61,7 +64,7 @@ const LandingNav = () => {
             </li>
             <li>
               <button
-                className="bg-sigvault-gold text-black rounded-lg h-10 px-4 py-1 bottom-8 font-bold"
+                className="bg-sigvault-gold text-black rounded-lg h-10 px-4 py-1 bottom-8 font-bold hover:bg-red-500"
                 onClick={() => setIsOpen(true)}>
                 Login/User
               </button>

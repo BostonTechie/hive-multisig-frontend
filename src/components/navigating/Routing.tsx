@@ -13,8 +13,8 @@ import { TwoFactorAuthPage } from '../page/TwoFactorAuthPage';
 import UnderConstruction from './UnderConst';
 
 const AuthenticatedRoute = ({ element }: { element: JSX.Element }) => {
-  const { isLoggedIn } = useAuth();
-  return isLoggedIn ? element : <Navigate to="/landing" />;
+  const { isLoggedInSig } = useAuth();
+  return isLoggedInSig ? element : <Navigate to="/landing" />;
 };
 
 const Routing = () => {

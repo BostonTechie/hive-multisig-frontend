@@ -16,16 +16,17 @@ interface User {
 }
 
 interface AuthContextType {
-  isLoggedIn: boolean;
+  isLoggedInSig: boolean;
   user: User | null;
   login: (userData: User) => void;
   logout: () => void;
+  setIsLoggedIn: (value: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedInSig, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [showVerify, setShowVerify] = useState(false);
   const [input, setInput] = useState('');
@@ -95,8 +96,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Memoize context value to optimize performance
   const contextValue = useMemo(
-    () => ({ isLoggedIn, user, login, logout }),
-    [isLoggedIn, user],
+    () => ({ isLoggedInSig, user, login, logout, setIsLoggedIn }),
+    [isLoggedInSig, user],
   );
 
   return (
